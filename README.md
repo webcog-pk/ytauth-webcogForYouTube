@@ -77,6 +77,20 @@ After completing the previous steps, you're ready to start using your YTAuth for
    ```bash
    python manage.py runserver
 
+## Step 10: Configure Email Settings
+
+To enable email functionality for notifications and user interactions, follow these steps:
+
+1. **Open `settings.py`:**
+   Locate your Django project's `settings.py` file, typically found in the main directory of your project.
+
+2. **Add Email Configuration:**
+   In `settings.py`, find the section related to email configuration. If not present, add the following lines:
+
+   ```python
+   EMAIL_HOST_USER = 'your_email@example.com'  # Replace with your email address
+   EMAIL_HOST_PASSWORD = 'your_email_password'  # Replace with your email password or app password
+
 
 ## Support Us
 
