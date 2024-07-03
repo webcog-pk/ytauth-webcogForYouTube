@@ -1,0 +1,28 @@
+{% load account %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% autoescape off %}
+{% user_display user as user_display %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+    <h1 style="text-align: center;">Confirm Your EMail Adress</h1>
+    <p style="color: red;">Hello from {{ site_domain }}.</p>
+    <p>You're receiving this email because user <b>{{ user_display }}</b> has given your email address to register an account on {{ site_domain }}</p>
+    <p>For COnfirm YOur Accout Please click on this link </p>
+    <a href="{{ activate_url }}" style="display: inline-block;padding: 15px 20px;background: rgb(23, 167, 224);color: white;text-decoration: none;font-weight: bold;">Activate Your Account</a>
+    <p>Thank you for using {{ site_domain }}</p>
+    <p>In the case if Activate BUtton is not working than you can use this link for activating your account
+        <a href="{{ activate_url }}">{{ activate_url }}</a>
+    </p>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7AI1vdVhDR2F5i7Lhw0d9HElqmu72ePNAHA&s" alt="">
+{% endblocktrans %}
+{% endautoescape %}
+</body>
+</html>

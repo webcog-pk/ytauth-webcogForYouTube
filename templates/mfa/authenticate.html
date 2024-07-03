@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<h1> 2FA</h1>
+<p>ENter your one time code (otp) from your AUth App inthe case if you lost your auth app you can use recovery codes</p>
+<form  method="post">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Singin</button>
+</form>
+
+{% endblock content %}

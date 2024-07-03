@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<h1>Signup</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+        {% render_field form.first_name  placeholder="First Name" %}
+    <br>
+        {% render_field form.last_name   placeholder="LAst Name" %} <br>
+        {% render_field form.username  %} <br>
+        {% render_field form.email  %} <br>
+        {% render_field form.password1  %} <br>
+        {% render_field form.password2  %} <br>
+        {% render_field form.phone  placeholder="PHone" %} <br>
+        {% render_field form.cnic  placeholder="CNIC" %} <br>
+
+    <input type="checkbox" name="" id="" required>
+    <label for="">I ageree Terms and COnditions</label>
+
+
+    <button type="submit">Singup</button>
+
+
+</form>
+
+
+{% endblock content %}

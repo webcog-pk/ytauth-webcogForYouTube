@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<h1> Regenrate COde</h1>
+<p>You are about to generate a new set of recovery codes for your account.
+This action will invalidate your existing codes.</p>
+<form  method="post">
+    {% csrf_token %}
+
+    <button type="submit">Regenrate NOw</button>
+</form>
+
+{% endblock content %}

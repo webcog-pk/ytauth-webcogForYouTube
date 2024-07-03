@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<h1>ENter a sign-in code </h1>
+<p>We’ve sent a code to {{ email_link }}. The code expires shortly, so please enter it soon.</p>
+
+<form  method="post">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">SIgin</button>
+</form>
+
+{% endblock content %}

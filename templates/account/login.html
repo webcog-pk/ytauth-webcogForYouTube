@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% block content %}
+
+<style>
+    .inpfm {
+    border:none;
+    border-bottom:2px solid black;
+    background:transparent;
+    }
+    .inpfm:focus, .inpfm:active{
+    border:none;
+    border-bottom:2px solid black;
+    background:transparent;
+    }
+</style>
+
+<h1>LOGIN</h1>
+
+<form method="post">
+        {% csrf_token %}
+
+    <labe>Username or Email</labe>
+        {% render_field form.login class="inpfm" placeholder="Username or EMail" %}
+    <labe>PAassword</labe>
+        {% render_field form.password class="inpfm" %}
+
+
+
+
+    
+    <button type="submit">Login</button>
+
+</form>
+
+<a href="{% url 'account_reset_password' %}">Forgot YOur Password</a>
+
+
+<h4>
+    <a href="{% url 'account_request_login_code' %}">Mail me a SIgn in COde</a>
+</h4>
+
+
+<a href="{% provider_login_url 'google' %}">Signin with google</a>
+<a href="{% provider_login_url 'github' %}">Signin with github</a>
+
+{% endblock content %}

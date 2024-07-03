@@ -1,0 +1,36 @@
+{% load account %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% autoescape off %}
+{% user_display user as user_display %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+    <h1 style="text-align: center;"> Authenticator App Deactivated</h1>
+    <p style="color: red;">Hello from {{ site_domain }}.</p>
+    <p>
+    You are receiving this mail because the following change was made to your account:
+    </p>
+    <h4>Authenticator App Deactivated.</h4>
+   <p>
+       If you do not recognize this change then please take proper security precautions immediately. The change to your account originates from:
+   </p>
+
+<ul>
+    <li>IP address: {{ip}}</li>
+    <li>Browser: {{user_agent}}</li>
+    <li>Date: {{timestamp}}</li>
+</ul>
+
+    <p>Thank you for using {{ site_domain }}</p>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7AI1vdVhDR2F5i7Lhw0d9HElqmu72ePNAHA&s" alt="">
+{% endblocktrans %}
+{% endautoescape %}
+</body>
+</html>

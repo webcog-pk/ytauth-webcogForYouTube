@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<h1>Sign in  Via  {{ provider }}</h1>
+<p>You are about to sign in using a third-party account from {{ provider }} </p>
+<form  method="post">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Sign via {{ provider }}</button>
+</form>
+{% endblock content %}

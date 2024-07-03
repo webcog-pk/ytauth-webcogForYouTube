@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load allauth %}
+{% load i18n %}
+{% load humanize %}
+
+{% block content %}
+<main>
+    <section class="pt-5 pb-5">
+        <div class="container">
+
+            <div class="row mt-0 mt-md-4">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mb-0">Session Track</h3>
+                        </div>
+                        <div class="card-body">
+                            <h1> {% trans "Sessions" %} </h1>
+                            {% if session_count > 1 %}
+                                {% url 'usersessions_list' as action_url %}
+                            {% else %}
+                                {% url 'account_logout' as action_url %}
+                            {% endif %}
+                            <form action="{{ action_url }}" method="post">
+                                {% csrf_token %}
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>{% translate "Started At" %}</th>
+                                                <th>{% translate "IP Address" %}</th>
+                                                <th>{% translate "Browser" %}</th>
+                                                {% if show_last_seen_at %}
+                                                    <th>{% translate "Last seen at" %}</th>
+                                                {% endif %}
+                                                <th>{% translate "Status" %}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for session in sessions %}
+                                                <tr>
+                                                    <td>
+                                                        <span title="{{ session.created_at }}">{{ session.created_at|naturaltime }}</span>
+                                                    </td>
+                                                    <td>{{ session.ip }}</td>
+                                                    <td>{{ session.user_agent }}</td>
+                                                    {% if show_last_seen_at %}
+                                                        <td>
+                                                            <span title="{{ session.last_seen_at }}">{{ session.last_seen_at|naturaltime }}</span>
+                                                        </td>
+                                                    {% endif %}
+                                                    <td>
+                                                        {% if session.is_current %}
+                                                            <span class="badge bg-success">{% translate "Current" %}</span>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {% if session_count > 1 %}
+                                    <button type="submit" class="btn btn-danger">{% translate "Sign Out Other Sessions" %}</button>
+                                {% else %}
+                                    <button type="submit" class="btn btn-danger">{% translate "Sign Out" %}</button>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

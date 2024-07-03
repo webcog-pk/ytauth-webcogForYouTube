@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<h1>Mail me a sign-in code </h1>
+<p>You will receive an email containing a special code for a password-free sign-in.</p>
+<form  method="post">
+    {% csrf_token %}
+    {% render_field form.email  %}
+    <button type="submit">REquest LOgin COde</button>
+</form>
+
+{% endblock content %}

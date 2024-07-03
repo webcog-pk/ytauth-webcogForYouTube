@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load allauth %}
+{% load i18n %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+<main>
+    <section class="pt-5 pb-5">
+        <div class="container">
+
+            <div class="row mt-0 mt-md-4">
+
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mb-0">Two-Factor Authentication</h3>
+                            <p class="mb-0">Enable 2FA to your account</p>
+                        </div>
+                        <div class="card-body">
+                            {% if "totp" in MFA_SUPPORTED_TYPES %}
+                                <div class="panel">
+                                    <h4>Authenticator App</h4>
+                                    {% if authenticators.totp %}
+                                        <p>Authentication using an authenticator app is active.</p>
+                                        <a href="{% url 'mfa_deactivate_totp' %}" class="btn btn-danger delete panel">
+                                            Deactivate
+                                        </a>
+                                    {% else %}
+                                        <p>An authenticator app is not active.</p>
+                                        <a href="{% url 'mfa_activate_totp' %}" class="btn btn-dark panel">
+                                            Activate
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                            <br>
+                            {% if "recovery_codes" in MFA_SUPPORTED_TYPES %}
+                            {% with total_count=authenticators.recovery_codes.generate_codes|length unused_count=authenticators.recovery_codes.get_unused_codes|length %}
+
+                                <div class="panel">
+                                    <h4>Recovery Codes</h4>
+
+                                    {% if authenticators.recovery_codes %}
+                                    {% blocktranslate count unused_count=unused_count %}There is {{ unused_count }} out of {{ total_count }} recovery codes available.{% plural %}There are {{ unused_count }} out of {{ total_count }} recovery codes available.{% endblocktranslate %}
+                            {% else %}
+                                    <p>No Recovery Codes Setup</p>
+                            {% endif %}
+
+                                    {% if is_mfa_enabled %}
+                                    <br /><br>
+                                    <div class="btn-group bg-light">
+
+                                        <a href="{% url 'mfa_generate_recovery_codes' %}" class="btn btn-link">Generate</a>
+                                        <a href="{% url 'mfa_view_recovery_codes' %}" class="btn btn-link">View</a>
+                                        <a href="{% url 'mfa_download_recovery_codes' %}" class="btn btn-link">Download</a>
+                                    </div>
+
+                                    {% endif %}
+                                </div>
+                                {% endwith %}
+
+                                {% endif %}
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+{% endblock content %}

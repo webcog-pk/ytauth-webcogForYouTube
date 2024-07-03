@@ -1,0 +1,34 @@
+{% load account %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% autoescape off %}
+{% user_display user as user_display %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+    <h1 style="text-align: center;">Account ALready Exist</h1>
+    <p style="color: red;">Hello from {{ site_domain }}.</p>
+    <p>
+        You are receiving this email because you or someone else tried to signup for an
+account using email address:
+    </p>
+    <p><a href="mailto:{{ email }}">{{ email }}</a> </p>
+    <p style="color:aqua;">
+        However, an account using that email address already exists.  In case you have
+forgotten about this, please use the password forgotten procedure to recover
+your account:
+    </p>
+<a href="{{ password_reset_url }}">{{ password_reset_url }}</a>
+<p>Thank you for using {{ site_domain }}</p>
+
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7AI1vdVhDR2F5i7Lhw0d9HElqmu72ePNAHA&s" alt="">
+{% endblocktrans %}
+{% endautoescape %}
+</body>
+</html>

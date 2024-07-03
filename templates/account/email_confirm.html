@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load account %}
+{% load allauth %}
+
+{% block content %}
+
+
+
+<h1>Confirm Your EMail Addeess</h1>
+ {% if confirmation %}
+{% user_display confirmation.email_address.user as user_display %}
+{% if can_confirm %}
+<p>
+    {% blocktrans with confirmation.email_address.email as email %}
+    Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an email address for user <b>{{ user_display }}</b>.
+    {% endblocktrans %}
+</p>
+{% endif %}
+{% endif %}
+
+<form  method="post">
+        {% csrf_token %}
+    <button type="submit">COnfirm EMail</button>
+</form>
+
+{% endblock content %}

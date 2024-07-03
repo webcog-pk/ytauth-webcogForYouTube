@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<h1>COnfirm Access </h1>
+<p>Enter Your Password</p>
+<form  method="post">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Confirm Acess</button>
+</form>
+
+{% endblock content %}
