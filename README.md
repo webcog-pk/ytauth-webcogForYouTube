@@ -69,15 +69,8 @@ To obtain Client ID and Client Secret for Google and GitHub:
   - [GitHub Developer Settings](https://github.com/settings/developers)
 
 Follow their instructions to create a new OAuth application and obtain the necessary credentials. Once you have the Client ID and Client Secret, enter them in the Django admin panel under each respective social account provider.
-## Step 9: Start Using Your Project
 
-After completing the previous steps, you're ready to start using your YTAuth for YouTube project:
-
-1. Ensure your Django development server is still running. If not, start it using:
-   ```bash
-   python manage.py runserver
-
-## Step 10: Configure Email Settings
+## Step 9: Configure Email Settings
 
 To enable email functionality for notifications and user interactions, follow these steps:
 
@@ -90,6 +83,16 @@ To enable email functionality for notifications and user interactions, follow th
    ```python
    EMAIL_HOST_USER = 'your_email@example.com'  # Replace with your email address
    EMAIL_HOST_PASSWORD = 'your_email_password'  # Replace with your email password or app password
+
+
+## Step 10: Start Using Your Project
+
+After completing the previous steps, you're ready to start using your YTAuth for YouTube project:
+
+1. Ensure your Django development server is still running. If not, start it using:
+   ```bash
+   python manage.py runserver
+
 
 
 ## Support Us
