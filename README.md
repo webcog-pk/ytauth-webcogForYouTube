@@ -53,11 +53,11 @@ The **Sites** section in the admin panel allows you to define the domain and dis
 
 By replacing `example.com` with `127.0.0.1`, you ensure that Django uses the correct domain when generating URLs and handling site-related functionality during development.
 
-## Step 8: Configure Social Accounts
+## Step 8: Configure Social Applications
 
 In the Django admin panel:
 
-1. Go to **Social Accounts**.
+1. Go to **Social Applications**.
 2. Add your account providers such as Google and GitHub.
    - For each provider, enter the respective Client ID and Client Secret obtained from their developer console.
 
