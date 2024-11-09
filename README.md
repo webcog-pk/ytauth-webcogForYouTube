@@ -97,8 +97,10 @@ After completing the previous steps, you're ready to start using your YTAuth for
 
 ## Support Us
 
-If you find YTAuth for YouTube useful and would like to support its development, consider buying us a coffee!
+If you find this project useful and would like to support its continued development, consider buying us a coffee! ☕ 
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-yellow)](https://www.buymeacoffee.com/webcog)
+[![Support me on Patreon](https://img.shields.io/badge/Support%20me%20on-Patreon-orange?style=for-the-badge&logo=patreon)](https://www.patreon.com/Webcog)
+
+
 
 Your contribution helps us maintain and improve YTAuth for YouTube. We appreciate your support!
